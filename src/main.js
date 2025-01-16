@@ -25,11 +25,9 @@ function handleSubmit(event) {
     return;
   }
 
-  refs.loader.style.display = 'inline-block';
+  refs.loader.classList.remove('is-hidden');
+
   fetchImages(inputValue)
-    .then(() => {
-      refs.loader.style.display = 'none';
-    })
     .catch(error => {
       refs.loader.style.display = 'none';
       iziToast.error({
@@ -37,6 +35,9 @@ function handleSubmit(event) {
         position: 'topRight',
       });
       console.error(error);
+    })
+    .finally(() => {
+      refs.loader.classList.add('is-hidden');
     });
 
   refs.form.reset();

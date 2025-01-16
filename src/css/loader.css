@@ -9,6 +9,10 @@
   animation: rotation 1s linear infinite;
 }
 
+.loader.is-hidden {
+  display: none;
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
